@@ -8,20 +8,14 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./style_form.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-    <script>
-    $( function() {
-      $( "#tabs" ).tabs();
-    } );
-    </script>
+    
 </head>
 <body>
     <div  id="tabs">
         <div class="sidebar close">
             <div class="logo-details">
                 <i class='bx bx-body'></i>
-                <span class="logo_name">CitizenV</span>
+                <span class="logo_name">Hệ Thống Điều Tra Dân Số</span>
             </div>
             <ul class="nav-links">
              <li>
@@ -32,15 +26,12 @@
                     </a>
                     <i class="bx bxs-chevron-down arrow"></i>
                 </div>
-                <ul class="sub-menu">
+                <ul class="sub-menu tab">
                     
                         <li><a class="link_name"  href="#">Quản lý thông tin</a></li>
-                       
-                        <li><a href="#tabs-1">Tạo mã</a></li>
-                        <li><a href="#tabs-2">Tạo tài khoản</a></li>
-                        <li><a href="#tabs-3">Danh sách TP</a></li>
-                     
-                    
+            
+                            <li ><a class="tablinks" id="defaultOpen" onclick="openCity(event, 'London') "href="#" >Tạo Tài khoản</a></li> 
+                            <li ><a class="tablinks" onclick="openCity(event, 'Paris') "href="#" >Danh Sách TP</a></li>     
                 </ul>
              </li> 
              <li>
@@ -85,10 +76,10 @@
         <section class="home-section">
             <div class="home-content">
                 <i class="bx bx-menu"></i>
-                <span class="text">Hệ Thống Điều Tra Dân Số</span>
+                <span class="text"></span>
                 
             </div>
-            <div id="tabs-1">
+            <div id="London" class="tabcontent">
                 <div id="tokhai">
                     <div class="container">
                         <div class="title">Tạo Tài Khoản</div>
@@ -113,7 +104,7 @@
                     </div> 
                    </div>
             </div>
-            <div id="tabs-2">
+            <div id="Paris" class="tabcontent">
                 <div id="tokhai">
                     <div class="container">
                         <div class="title">Tạo Tài Khoản</div>
@@ -150,7 +141,30 @@
          sidebar.classList.toggle("close");
                 });
            
-        
+
+                function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the link that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}   
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
     </script>
+
 </body>
 </html>
